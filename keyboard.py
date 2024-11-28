@@ -16,7 +16,9 @@ button_f = InlineKeyboardButton(text='Флегматика',callback_data='fl')
 button_ch = InlineKeyboardButton(text='Холерика',callback_data='ch')
 button_mel = InlineKeyboardButton(text='Меланхолика',callback_data='mel')
 button_san = InlineKeyboardButton(text='Сангвиника',callback_data='san')
+button_http =  InlineKeyboardButton(text='Ссылка на git c кодом',url='https://github.com/ShumsAn/Test_bot')
 kb_about.add(button_f,button_ch)
 kb_about.add(button_mel,button_san)
+kb_about.add(button_http)
 
 

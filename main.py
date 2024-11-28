@@ -62,6 +62,7 @@ async def v_n(callback: types.callback_query, state):
     if 16 <= data["number_v"] <= 20:
         await callback.message.answer(f'{block_melancholic[data["number_v"]]}', reply_markup=kb_in)
     if data["number_v"] == 21:
+        data = await state.get_data()
         await state.finish()
         pr = data['melancholic'] + data['sanguine'] + data['phlegmatic'] + data['choleric']
         values = [x for x in data.values() if x != data['name_user'] if x != data['number_v'] if x != 0]
@@ -86,6 +87,7 @@ async def about_temp(callback: types.callback_query):
         await callback.message.answer(about_ch)
     if callback.data == 'san':
         await callback.message.answer(about_san)
+
 
 
 if __name__ == "__main__":

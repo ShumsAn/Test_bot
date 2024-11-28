@@ -45,25 +45,25 @@ async def v_n(callback: types.callback_query, state):
     data = await state.get_data()
     await state.update_data(number_v=data["number_v"] + 1)
     data = await state.get_data()
-    if callback.data == 'response_yes' and data["number_v"] <= 20:
+    if callback.data == 'response_yes' and data["number_v"] <= 21:
         data = await state.get_data()
         await state.update_data(choleric=data['choleric'] + 1)
-    if callback.data == 'response_yes' and 20 < data["number_v"] <= 40:
+    if callback.data == 'response_yes' and 21 < data["number_v"] <= 41:
         data = await state.get_data()
         await state.update_data(phlegmatic=data['phlegmatic'] + 1)
-    if callback.data == 'response_yes' and 40 < data["number_v"] <= 60:
+    if callback.data == 'response_yes' and 41 < data["number_v"] <= 61:
         data = await state.get_data()
         await state.update_data(sanguine=data['sanguine'] + 1)
-    if callback.data == 'response_yes' and 60 < data["number_v"] <= 80:
+    if callback.data == 'response_yes' and 61 < data["number_v"] <= 81:
         data = await state.get_data()
         await state.update_data(melancholic=data['melancholic'] + 1)
-    if data['number_v'] < 20:
+    if data['number_v'] <= 20:
         await callback.message.answer(f'{block_choleric2[data["number_v"]]}', reply_markup=kb_in)
-    if 20 <= data["number_v"] < 40:
+    if 21 <= data["number_v"] <= 40:
         await callback.message.answer(f'{block_phlegmatic2[data["number_v"]]}', reply_markup=kb_in)
-    if 40 <= data["number_v"] < 60:
+    if 41 <= data["number_v"] <= 60:
         await callback.message.answer(f'{block_sanguine2[data["number_v"]]}', reply_markup=kb_in)
-    if 60 <= data["number_v"] <= 80:
+    if 61 <= data["number_v"] <= 80:
         await callback.message.answer(f'{block_melancholic2[data["number_v"]]}', reply_markup=kb_in)
     if data["number_v"] == 81:
         await state.finish()
@@ -78,6 +78,7 @@ async def v_n(callback: types.callback_query, state):
                                       f'Вы Холерик на {data["choleric"] / pr * 100}%\n'
                                       f'Вы Сангвиник на {data["sanguine"] / pr * 100}%\n'
                                       f'Вы Меланхолик на {data["melancholic"] / pr * 100}%\n')
+        await callback.message.answer("Хотите узнать больше про ...", reply_markup=kb_about)
 
 
 @dp.callback_query_handler(text=('fl', 'ch', 'mel', 'san'), state="*")

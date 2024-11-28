@@ -18,6 +18,8 @@ async def start_message(message):
 @dp.message_handler(text='Информация')
 async def info(message):
     await message.answer(about)
+
+
 class TempState(StatesGroup):
     phlegmatic = State()
     choleric = State()
@@ -87,6 +89,10 @@ async def about_temp(callback: types.callback_query):
         await callback.message.answer(about_ch)
     if callback.data == 'san':
         await callback.message.answer(about_san)
+
+@dp.message_handler()
+async def mes_(message):
+    await message.answer('Отправь пожалуйста команду /start')
 
 
 
